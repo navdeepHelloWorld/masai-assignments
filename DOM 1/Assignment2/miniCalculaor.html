@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>mini calculator</title>
+  </head>
+  <body>
+    <input id="firstNum" type="number">
+    <input id="secondNum" type="number">
+    <button onclick="added()"> Add </button>
+    <button onclick="subtracted()">subtract </button>
+    <button onclick="multiply()"> multiply </button>
+    <button onclick="divided()"> divide</button>
+  </body>
+</html>
+<script>
+  // Write js here
+let firstNum=document.getElementById("firstNum");
+let secondNum=document.getElementById("secondNum")
+
+
+ function added(){
+  alert(+firstNum.value+ +secondNum.value)
+ };
+ function subtracted(){
+    alert(+firstNum.value- secondNum.value)
+ };
+  function multiply(){
+    alert(+firstNum.value* secondNum.value)
+  };
+  function divided(){
+    alert(+firstNum.value/ secondNum.value)
+  }
+
+</script>
