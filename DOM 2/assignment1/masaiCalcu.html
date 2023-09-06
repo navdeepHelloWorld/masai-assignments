@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <h1 id="display">  </h1>
+     <div class="keypad">
+           <button>0</button>
+           <button>1</button>
+           <button>2</button>
+            <button>3</button>
+           <button>4</button>
+           <button>5</button>
+           <button>6</button>
+           <button>7</button>
+           <button>8</button>
+           <button>9</button>
+        </div>
+     <div class="operator">
+           <button>+</button>
+           <button>-</button>
+           <button>*</button>
+           <button>/</button> 
+       </div>
+       <div>
+        <button id="equal">=</button>
+       </div>
+    </div>
+</body>
+
+<script>
+
+
+
+    let keypadButton = document.querySelectorAll(".keypad>button");
+    let operatorButton = document.querySelectorAll(".operator>button");
+    let equal = document.getElementById("equal");
+    let heading = document.getElementById("display");
+    let firstNumber = ""
+    let secondNumber = "";
+    let isFirstNumber = true;
+    let operators = ""
+
+    for (let i = 0; i < keypadButton.length; i++) {
+        keypadButton[i].addEventListener("click", function () {
+            if (isFirstNumber === true) {
+                firstNumber += keypadButton[i].innerText;
+                heading.innerText = firstNumber;
+            } else {
+                secondNumber += keypadButton[i].innerText;
+                heading.innerText = secondNumber;
+            }
+        })
+    }
+
+    for (let i = 0; i < operatorButton.length; i++) {
+        operatorButton[i].addEventListener("click", function () {
+            isFirstNumber = false;
+            operators = operatorButton[i].innerText;
+        });
+    }
+
+    function calculate(firstNumber, secondNumber, operators) {
+        switch (operators) {
+            case "+":
+                return Number(firstNumber) + Number(secondNumber);
+
+            case "-":
+                return Number(firstNumber) - Number(secondNumber);
+
+            case "*":
+                return Number(firstNumber) * Number(secondNumber);
+
+            case "/":
+                return Number(firstNumber) / Number(secondNumber);
+        }
+    }
+
+    equal.addEventListener("click", function () {
+        heading.innerText = calculate(firstNumber, secondNumber, operators);
+        isFirstNumber = true
+    });
+</script>
+</html>
